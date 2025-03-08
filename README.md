@@ -11,7 +11,7 @@ import (
 
 func main() {
 	fmt.Println("start")
-	running.Loop(func() {
+	gorunning.Loop(func() {
 		fmt.Println("exit")
 	}, func() {}, nil)
 }

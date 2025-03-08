@@ -1,5 +1,6 @@
+//go:build linux || darwin
 // +build linux darwin
 
-package running
+package gorunning
 
 var pidFilePath = "/var/run"

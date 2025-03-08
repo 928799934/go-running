@@ -1,7 +1,6 @@
-package running
+package gorunning
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -41,7 +40,7 @@ func (p *Pid) logf(format string, args ...interface{}) {
 // Init create pid file, set working dir, setpid.
 func (p *Pid) Create() error {
 	strPID := strconv.Itoa(p.iPID)
-	if err := ioutil.WriteFile(p.pidFilePath, []byte(strPID), 0644); err != nil {
+	if err := os.WriteFile(p.pidFilePath, []byte(strPID), 0644); err != nil {
 		p.logf("ioutil.WriteFile(%v,%v,0644) error(%v)", p.pidFilePath, strPID, err)
 		return err
 	}
@@ -49,7 +48,7 @@ func (p *Pid) Create() error {
 }
 
 func (p *Pid) Close() error {
-	buf, err := ioutil.ReadFile(p.pidFilePath)
+	buf, err := os.ReadFile(p.pidFilePath)
 	if err != nil {
 		p.logf("ioutil.ReadFile(%v) error(%v)", p.pidFilePath, err)
 		return err

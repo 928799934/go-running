@@ -1,3 +1,3 @@
-package running
+package gorunning
 
 var pidFilePath = "./"
